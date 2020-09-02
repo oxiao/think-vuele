@@ -5,7 +5,7 @@ var Components = require('../components.json');
 
 var utilsList = fs.readdirSync(path.resolve(__dirname, '../src/utils'));
 var mixinsList = fs.readdirSync(path.resolve(__dirname, '../src/mixins'));
-var transitionList = fs.readdirSync(path.resolve(__dirname, '../src/transitions'));
+// var transitionList = fs.readdirSync(path.resolve(__dirname, '../src/transitions'));
 var externals = {};
 
 Object.keys(Components).forEach(function(key) {
@@ -21,10 +21,10 @@ mixinsList.forEach(function(file) {
   file = path.basename(file, '.js');
   externals[`tennetcn-ui/src/mixins/${file}`] = `tennetcn-ui/lib/mixins/${file}`;
 });
-transitionList.forEach(function(file) {
-  file = path.basename(file, '.js');
-  externals[`tennetcn-ui/src/transitions/${file}`] = `tennetcn-ui/lib/transitions/${file}`;
-});
+// transitionList.forEach(function(file) {
+//   file = path.basename(file, '.js');
+//   externals[`tennetcn-ui/src/transitions/${file}`] = `tennetcn-ui/lib/transitions/${file}`;
+// });
 
 externals = [Object.assign({
   vue: 'vue'
