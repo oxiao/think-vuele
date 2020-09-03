@@ -3,7 +3,7 @@
 </template>
 <script>
 import Vue from 'vue'
-import { random } from 'tennetcn-ui/lib/utils'
+import { random } from 'main/utils'
 export default {
   name: 'TcCodeDisplay',
   props: {

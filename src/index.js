@@ -38,7 +38,7 @@ import {
   TcTimePicker,
   TcTree,
   TcTreeTable,
-  TcXgPlayer,
+  // TcXgPlayer,
   TcFastTable
 } from '../packages/tennetcn-ui'
 
@@ -81,7 +81,7 @@ const components = [
   TcTimePicker,
   TcTree,
   TcTreeTable,
-  TcXgPlayer,
+  // TcXgPlayer,
   TcFastTable
 ]
 import ElementUI from 'element-ui'
@@ -152,6 +152,6 @@ export default {
   TcTag,
   TcTimePicker,
   TcTree,
-  TcTreeTable,
-  TcXgPlayer
+  // TcXgPlayer,
+  TcTreeTable
 }
