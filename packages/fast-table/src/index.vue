@@ -21,18 +21,19 @@
       @select-all="myHandleSelectAll">
       <el-table-column v-if="selection" :fixed="(columns[0]||{}).fixed" type="selection" width="45" align="center">
       </el-table-column>
-      <el-table-column v-if="sequence" :fixed="(columns[0]||{}).fixed" label="序号" align="center" width="55">
+      <el-table-column v-if="sequence" :fixed="(columns[0]||{}).fixed" label="序" align="center" width="55">
         <template slot-scope="scope">
-          {{ scope.$index + 1 }}
+          {{ beginRowIndex + scope.$index + 1 }}
         </template>
       </el-table-column>
-      <el-table-column v-for="column in columnFormate" 
+      <el-table-column v-for="column in columnFormate"
         :key="column.name"
         :resizable="column.resizable"
         :label="column.text"
         :width="column.width"
         :fixed="column.fixed"
         :show-overflow-tooltip="column.showOverflowTooltip"
+        :header-align="column.headerAlign==null?'center':column.headerAlign"
         :align="column.align==null?'center':column.align">
         <template slot-scope="scope" >
           <slot :value="scope.row[column.name]" :columnName="column.name" :rowData="scope.row" :column="column" :scope="scope">
@@ -60,7 +61,8 @@ export default {
     fit: { type: Boolean, required: false, default: true },
     selection: { type: Boolean, required: false, default: false },
     selectionType: { type: String, required: false, default: 'single' },
-    columns: { type: Array, default: () => [] }
+    columns: { type: Array, default: () => [] },
+    beginRowIndex: {type: Number, required: false, default: 0}
   },
   data: () => ({
     currentRow: null,

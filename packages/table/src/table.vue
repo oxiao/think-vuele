@@ -18,9 +18,9 @@
       @select-all="myHandleSelectAll">
       <el-table-column v-if="selection" type="selection" width="45" align="center">
       </el-table-column>
-      <el-table-column v-if="sequence" label="序号" align="center" width="55">
+      <el-table-column v-if="sequence" label="序" align="center" width="55">
         <template slot-scope="scope">
-          {{ scope.$index + 1 }}
+          {{ beginRowIndex + scope.$index + 1 }}
         </template>
       </el-table-column>
       <el-table-column v-for="column in columnFormate" :key="column.name" :label="column.text" :width="column.width" :align="column.align==null?'center':column.align">
@@ -47,7 +47,8 @@ export default {
     fit: { type: Boolean, required: false, default: true },
     selection: { type: Boolean, required: false, default: false },
     selectionType: { type: String, required: false, default: 'single' },
-    columns: { type: Array, default: () => [] }
+    columns: { type: Array, default: () => [] },
+    beginRowIndex: {type: Number, required: false, default: 0}
   },
   data: () => ({
     currentRow: null,
