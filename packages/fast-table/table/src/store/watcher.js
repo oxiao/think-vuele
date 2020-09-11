@@ -112,6 +112,8 @@ export default Vue.extend({
 
       states.columns = [].concat(fixedLeafColumns).concat(leafColumns).concat(rightFixedLeafColumns)
       states.isComplex = states.fixedColumns.length > 0 || states.rightFixedColumns.length > 0
+
+      // console.log('update', states.columns)
     },
 
     // 更新 DOM

@@ -29,6 +29,7 @@ Watcher.prototype.mutations = {
   insertColumn(states, column, index, parent) {
     if (index < 0) return
     let array = states._columns
+    // console.log(states, column, index, parent)
     if (parent) {
       array = parent.children
       if (!array) array = parent.children = []
