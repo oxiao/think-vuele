@@ -1,21 +1,21 @@
 <template>
   <div>
-    <tc-table 
-      :data="formatData" 
-      :columns="columns" 
+    <tc-table
+      :data="formatData"
+      :columns="columns"
       :border="border"
       :stripe="stripe"
       :selection="selection"
       :sequence="sequence"
-      :fit="fit" 
-      v-bind="$attrs" 
+      :fit="fit"
+      v-bind="$attrs"
       class="tc-edit-table"
       v-on="$listeners">
-      <template slot-scope="{ value, columnName, rowData, column, scope }">
-        <slot v-if="!toObject(column).editable" :value="value" :columnName="columnName" :rowData="rowData" :column="column" :scope="scope">
-          <span>{{ value }}</span>
-        </slot>
-        <slot v-else :value="value" :columnName="columnName" :rowData="rowData" :column="column" :scope="scope" name="editable">
+      <template #column="{ value, columnName, rowData, column, scope }">
+        <span v-if="!toObject(column).editable">
+          {{ value }}
+        </span>
+        <slot name="editable" v-else :value="value" :columnName="columnName" :rowData="rowData" :column="column" :scope="scope" >
           <div :class="{'editable-control' : isSignleMode, 'editable-container': !isSignleMode}">
             <tc-date-picker v-if="toObject(column).type === 'date'" v-model="scope.row[columnName]" type="date" size="mini"></tc-date-picker>
             <tc-select v-else-if="toObject(column).type === 'select'" :providers="toObject(column).providers" v-model="scope.row[columnName]" size="mini"></tc-select>

@@ -1,19 +1,19 @@
 <template>
   <div>
-    <tc-table ref="eltable" 
+    <tc-table ref="eltable"
     :data="formatData"
     :columns="formatColumns"
-    :row-style="showRow" 
-    v-bind="$attrs" 
-    :stripe="stripe" 
-    :border="border" 
-    :fit="fit" 
+    :row-style="showRow"
+    v-bind="$attrs"
+    :stripe="stripe"
+    :border="border"
+    :fit="fit"
     :sequence="sequence"
     :selection="selection"
     class="tc-tree-table"
     v-on="$listeners" >
-       <template slot-scope="{ value, columnName, rowData, column, scope }">
-        <slot :value="value" :columnName="columnName" :rowData="rowData" :column="column" :scope="scope">
+       <template #column="{ value, columnName, rowData, column, scope }">
+        <slot name="column" :value="value" :columnName="columnName" :rowData="rowData" :column="column" :scope="scope">
           {{ value }}
         </slot>
        </template>
