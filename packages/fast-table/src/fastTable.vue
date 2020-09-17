@@ -59,7 +59,7 @@
               @sort-change="sortChange">
       <!--无数据布局-->
       <template slot="empty">
-        <slot name="empty">{{ emptyText }}</slot>
+        {{ emptyText }}
       </template>
       <!--列的数组-->
       <slot/>

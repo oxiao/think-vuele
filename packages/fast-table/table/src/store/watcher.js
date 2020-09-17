@@ -91,6 +91,7 @@ export default Vue.extend({
     updateColumns() {
       const states = this.states
       const _columns = states._columns || []
+
       states.fixedColumns = _columns.filter((column) => column.fixed === true || column.fixed === 'left')
       states.rightFixedColumns = _columns.filter((column) => column.fixed === 'right')
 
@@ -112,8 +113,6 @@ export default Vue.extend({
 
       states.columns = [].concat(fixedLeafColumns).concat(leafColumns).concat(rightFixedLeafColumns)
       states.isComplex = states.fixedColumns.length > 0 || states.rightFixedColumns.length > 0
-
-      // console.log('update', states.columns)
     },
 
     // 更新 DOM

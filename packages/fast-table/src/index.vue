@@ -22,8 +22,8 @@
       <el-table-column v-if="selection" :fixed="(columns[0]||{}).fixed" type="selection" width="45" align="center">
       </el-table-column>
       <el-table-column v-if="sequence" :fixed="(columns[0]||{}).fixed" label="序" align="center" width="55">
-        <template slot-scope="scope">
-          {{ beginRowIndex + scope.$index + 1 }}
+        <template #default="{ row, column, $index }">
+          {{ beginRowIndex + $index + 1 }}
         </template>
       </el-table-column>
       <el-table-column v-for="column in columnFormate"
@@ -32,13 +32,13 @@
         :label="column.text"
         :width="column.width"
         :fixed="column.fixed"
+        :property="column.name"
+        :prop="column.name"
         :show-overflow-tooltip="column.showOverflowTooltip"
         :header-align="column.headerAlign==null?'center':column.headerAlign"
         :align="column.align==null?'center':column.align">
-        <template slot-scope="scope" >
-          <slot :value="scope.row[column.name]" :columnName="column.name" :rowData="scope.row" :column="column" :scope="scope">
-            {{ scope.row[column.name] }}
-          </slot>
+        <template #default="{ row, column, $index }" >
+            {{ row[column.property] }}
         </template>
       </el-table-column>
       <slot />
