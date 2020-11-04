@@ -14,13 +14,16 @@ export default {
     pager: { type: Object, required: false, default: null },
     small: { type: Boolean, required: false, default: false },
     layout: { type: String, required: false, default: 'total, prev, pager, next, sizes' },
-    pageSizes: { type: String, required: false, default: '10,30,50,100' }
+    pageSizes: { type: String, required: false, default: '10,30,50,100' },
   },
   data: () => ({
   }),
   computed: {
     pageSizeArray: function() {
       return this.pageSizes.split(',').map(item => parseInt(item, 10))
+    },
+    sequence() {
+      return (this.pager.pageIndex - 1) * this.pager.pageSize + 1
     }
   },
   methods: {
@@ -32,7 +35,7 @@ export default {
       this.pager.pageSize = val
       this.$emit('pagerChange', this.pager.pageIndex, val)
       this.$emit('sizeChange', this.pager.pageIndex, val)
-    }
+    },
   }
 }
 </script>

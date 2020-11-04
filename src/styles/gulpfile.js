@@ -10,7 +10,7 @@ function compile() {
     .pipe(sass.sync())
     // .pipe(sass.sync({outputStyle: 'compressed'}))
     .pipe(autoprefixer({
-      browsers: ['ie > 9', 'last 2 versions'],
+      overrideBrowserslist: ['ie > 9', 'last 2 versions'],
       cascade: false
     }))
     .pipe(cssmin({advanced: false, keepSpecialComments: '*'}))
@@ -21,7 +21,7 @@ function compileCompoents() {
     .pipe(sass.sync())
     // .pipe(sass.sync({outputStyle: 'compressed'}))
     .pipe(autoprefixer({
-      browsers: ['ie > 9', 'last 2 versions'],
+      overrideBrowserslist: ['ie > 9', 'last 2 versions'],
       cascade: false
     }))
     .pipe(cssmin({advanced: false, keepSpecialComments: '*'}))

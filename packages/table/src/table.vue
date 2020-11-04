@@ -23,10 +23,15 @@
           {{ beginRowIndex + scope.$index + 1 }}
         </template>
       </el-table-column>
-      <el-table-column v-for="column in columnFormate" :key="column.name" :label="column.text" :width="column.width" :align="column.align==null?'center':column.align">
-        <template slot-scope="scope" >
-          <slot name="column" :value="scope.row[column.name]" :columnName="column.name" :rowData="scope.row" :column="column" :scope="scope">
-            {{ scope.row[column.name] }}
+      <el-table-column v-for="col in columnFormate" :key="col.name" :property="col.name" :label="col.text" :width="col.width" :align="col.align==null?'center':col.align" :formatter="col.formatter">
+        <template #default="{row, column, $index}" >
+          <slot name="column" :value="row[col.name]" :columnName="col.name" :rowData="row" :column="col">
+            <template v-if="col.formatter">
+              {{col.formatter(row, col, row[col.name])}}
+            </template>
+            <template v-else>
+              {{row[col.name]}}
+            </template>
           </slot>
         </template>
       </el-table-column>

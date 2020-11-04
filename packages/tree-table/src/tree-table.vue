@@ -8,13 +8,17 @@
     :stripe="stripe"
     :border="border"
     :fit="fit"
-    :sequence="sequence"
     :selection="selection"
     class="tc-tree-table"
     v-on="$listeners" >
-       <template #column="{ value, columnName, rowData, column, scope }">
-        <slot name="column" :value="value" :columnName="columnName" :rowData="rowData" :column="column" :scope="scope">
-          {{ value }}
+       <template #column="{ value, columnName, rowData, column }">
+        <slot name="column" :value="value" :columnName="columnName" :property="columnName" :rowData="rowData" :column="column">
+          <template v-if="column.formatter">
+            {{column.formatter(rowData, column, value)}}
+          </template>
+          <template v-else>
+            {{value}}
+          </template>
         </slot>
        </template>
        <slot />
@@ -31,7 +35,6 @@ export default {
   mixins: [table],
   props: {
     hier: { type: Boolean, required: false, default: false },
-    sequence: { type: Boolean, required: false, default: false },
     evalFunc: { type: Function, required: false, default: null },
     evalArgs: { type: Array, default: () => [] },
     expandAll: { type: Boolean, default: false }

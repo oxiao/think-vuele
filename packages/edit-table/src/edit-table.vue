@@ -11,16 +11,21 @@
       v-bind="$attrs"
       class="tc-edit-table"
       v-on="$listeners">
-      <template #column="{ value, columnName, rowData, column, scope }">
+      <template #column="{ value, columnName, rowData, column }">
         <span v-if="!toObject(column).editable">
-          {{ value }}
+            <template v-if="column.formatter">
+              {{column.formatter(rowData, column, value)}}
+            </template>
+            <template v-else>
+              {{value}}
+            </template>
         </span>
-        <slot name="editable" v-else :value="value" :columnName="columnName" :rowData="rowData" :column="column" :scope="scope" >
+        <slot name="editable" v-else :value="value" :columnName="columnName" :rowData="rowData" :column="column" >
           <div :class="{'editable-control' : isSignleMode, 'editable-container': !isSignleMode}">
-            <tc-date-picker v-if="toObject(column).type === 'date'" v-model="scope.row[columnName]" type="date" size="mini"></tc-date-picker>
-            <tc-select v-else-if="toObject(column).type === 'select'" :providers="toObject(column).providers" v-model="scope.row[columnName]" size="mini"></tc-select>
-            <tc-checkbox v-else-if="toObject(column).type === 'checkbox'" v-model="scope.row[columnName]" size="mini"></tc-checkbox>
-            <tc-input v-else v-model="scope.row[columnName]" type="text" size="mini"></tc-input>
+            <tc-date-picker v-if="toObject(column).type === 'date'" v-model="rowData[columnName]" type="date" size="mini"></tc-date-picker>
+            <tc-select v-else-if="toObject(column).type === 'select'" :providers="toObject(column).providers" v-model="rowData[columnName]" size="mini"></tc-select>
+            <tc-checkbox v-else-if="toObject(column).type === 'checkbox'" v-model="rowData[columnName]" size="mini"></tc-checkbox>
+            <tc-input v-else v-model="rowData[columnName]" type="text" size="mini"></tc-input>
           </div>
           <span :class="{'editable-span' : isSignleMode, 'editable-span-hide': !isSignleMode}">{{ value }}</span>
         </slot>

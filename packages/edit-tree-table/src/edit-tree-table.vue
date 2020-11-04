@@ -1,15 +1,14 @@
 <template>
   <div>
-    <tc-edit-table ref="eltable" 
-      :data="formatData" 
+    <tc-edit-table ref="eltable"
+      :data="formatData"
       :row-style="showRow"
       :columns="columns"
-      v-bind="$attrs" 
-      :stripe="stripe" 
-      :border="border" 
-      :fit="fit" 
+      v-bind="$attrs"
+      :stripe="stripe"
+      :border="border"
+      :fit="fit"
       :editmode="editmode"
-      :sequence="sequence"
       :selection="selection"
       class="tc-edit-tree-table"
       v-on="$listeners" >
@@ -27,7 +26,6 @@ export default {
   mixins: [table],
   props: {
     hier: { type: Boolean, required: false, default: false },
-    sequence: { type: Boolean, required: false, default: false },
     evalFunc: { type: Function, required: false, default: null },
     evalArgs: { type: Array, default: () => [] },
     expandAll: { type: Boolean, default: false }

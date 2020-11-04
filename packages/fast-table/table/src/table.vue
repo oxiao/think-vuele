@@ -647,6 +647,7 @@ export default {
     data: {
       immediate: true,
       handler(value) {
+        console.log('monster---', value)
         this.store.commit('setData', value)
       }
     },
