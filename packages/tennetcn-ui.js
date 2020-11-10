@@ -36,6 +36,6 @@ export { default as TcTag } from './tag'
 export { default as TcTimePicker } from './time-picker'
 export { default as TcTree } from './tree'
 export { default as TcTreeTable } from './tree-table'
-export { default as TcXgPlayer } from './xg-player'
+// export { default as TcXgPlayer } from './xg-player'
 
 export { default as TcFastTable } from './fast-table'

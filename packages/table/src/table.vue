@@ -20,7 +20,7 @@
       </el-table-column>
       <el-table-column v-if="sequence" label="序" align="center" width="55">
         <template slot-scope="scope">
-          {{ beginRowIndex + scope.$index + 1 }}
+          {{ beginRowIndex + scope.$index }}
         </template>
       </el-table-column>
       <el-table-column v-for="col in columnFormate" :key="col.name" :property="col.name" :label="col.text" :width="col.width" :align="col.align==null?'center':col.align" :formatter="col.formatter">
@@ -53,7 +53,7 @@ export default {
     selection: { type: Boolean, required: false, default: false },
     selectionType: { type: String, required: false, default: 'single' },
     columns: { type: Array, default: () => [] },
-    beginRowIndex: {type: Number, required: false, default: 0}
+    beginRowIndex: {type: Number, required: false, default: 1}
   },
   data: () => ({
     currentRow: null,

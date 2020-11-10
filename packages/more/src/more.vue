@@ -1,7 +1,7 @@
 <template>
   <div class="tc-more">
     <el-collapse v-bind="$attrs" v-on="$listeners">
-      <more-item ref="moreItem">
+      <more-item ref="moreItem" :is-active="isActive">
         <template slot="title">
           <el-row style="width:100%">
             <el-col :span="12">
@@ -9,7 +9,7 @@
             </el-col>
             <el-col :span="12" style="text-align:right;">
               <slot name="tool"></slot>
-              <i class="cursor-pointer" :class="iconArrow" @click="handItemClick" />
+              <i class="cursor-pointer" :class="iconArrow" />
             </el-col>
           </el-row>
         </template>
@@ -27,22 +27,30 @@ export default {
   components: {moreItem},
   data() {
     return {
-      isActive: false
+      cls: ''
     }
   },
   props: {
-    title: String
+    title: String,
+    isActive: {type: Boolean, required: false, default: true}
   },
   computed: {
-    iconArrow: function() {
-      return this.isActive ? 'el-icon-arrow-up' : 'el-icon-arrow-down'
+    iconArrow() {
+      return this.cls || (!this.isActive ? 'el-icon-arrow-up' : 'el-icon-arrow-down')
     }
   },
   methods: {
-    handItemClick: function() {
+    handItemClick(e) {
       this.$refs.moreItem.handleHeaderClick()
       this.isActive = !this.isActive
     }
+  },
+  mounted() {
+    this.$nextTick(function() {
+      this.$refs.moreItem.$on('more-item-click', function(b) {
+        this.cls = b ? 'el-icon-arrow-up' : 'el-icon-arrow-down'
+      })
+    })
   }
 }
 </script>
