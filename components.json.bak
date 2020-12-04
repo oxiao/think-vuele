@@ -7,11 +7,15 @@
   "checkbox-button": "./packages/checkbox-button/index.js",
   "checkbox-group": "./packages/checkbox-group/index.js",
   "clamp": "./packages/clamp/index.js",
+  "date-picker": "./packages/date-picker/index.js",
+  "date-time-picker": "./packages/date-time-picker/index.js",
   "dialog": "./packages/dialog/index.js",
   "edit-table": "./packages/edit-table/index.js",
   "edit-tree-table": "./packages/edit-tree-table/index.js",
   "fieldset": "./packages/fieldset/index.js",
   "fixed-bottom": "./packages/fixed-bottom/index.js",
+  "form": "./packages/form/index.js",
+  "form-item": "./packages/form-item/index.js",
   "input": "./packages/input/index.js",
   "input-money": "./packages/input-money/index.js",
   "input-number": "./packages/input-number/index.js",
@@ -30,6 +34,8 @@
   "table": "./packages/table/index.js",
   "tabs": "./packages/tabs/index.js",
   "tag": "./packages/tag/index.js",
+   "time-picker": "./packages/time-picker/index.js",
   "tree": "./packages/tree/index.js",
-  "tree-table": "./packages/tree-table/index.js"
+  "tree-table": "./packages/tree-table/index.js",
+  "xg-player": "./packages/xg-player/index.js"
 }

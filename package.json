@@ -35,17 +35,17 @@
   "unpkg": "lib/index.js",
   "style": "lib/theme-chalk/index.css",
   "dependencies": {
+    "throttle-debounce": "^1.1.0"
+  },
+  "devDependencies": {
     "accounting-js": "^1.1.1",
     "crypto": "^1.0.1",
     "element-ui": "^2.12.0",
     "moment": "^2.24.0",
+    "normalize-wheel": "^1.0.1",
     "vue": "^2.6.12",
     "vue-moment": "^4.0.0",
     "vue-router": "^3.0.1",
-    "throttle-debounce": "^1.1.0",
-    "normalize-wheel": "^1.0.1"
-  },
-  "devDependencies": {
     "@fortawesome/fontawesome-free": "^5.8.1",
     "@handsontable/vue": "^4.0.0",
     "@vue/component-compiler-utils": "^2.6.0",

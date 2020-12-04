@@ -1,12 +1,3 @@
-/*!
- * The buffer module from node.js, for the browser.
- *
- * @author   Feross Aboukhadijeh <http://feross.org>
- * @license  MIT
- */
-
-/*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
-
 /**
  * Checks if an event is supported in the current execution environment.
  *
@@ -21,9 +12,3 @@
  * @internal
  * @license Modernizr 3.0.0pre (Custom Build) | MIT
  */
-
-//! moment.js
-
-//! moment.js language configuration
-
-//! moment.js locale configuration

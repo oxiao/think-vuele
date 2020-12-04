@@ -1,4 +1,4 @@
-import './styles/index.scss'
+// import './styles/index.scss'
 import {
   TcBadge,
   TcBlock,
@@ -8,15 +8,15 @@ import {
   TcCheckboxButton,
   TcCheckboxGroup,
   TcClamp,
-  TcDatePicker,
-  TcDateTimePicker,
+  // TcDatePicker,
+  // TcDateTimePicker,
   TcDialog,
   TcEditTable,
   TcEditTreeTable,
   TcFieldset,
   TcFixedBottom,
-  TcForm,
-  TcFormItem,
+  // TcForm,
+  // TcFormItem,
   TcInput,
   TcInputMoney,
   TcInputNumber,
@@ -35,11 +35,12 @@ import {
   TcTable,
   TcTabs,
   TcTag,
-  TcTimePicker,
+  // TcTimePicker,
   TcTree,
-  TcTreeTable,
+  TcTreeTable
   // TcXgPlayer,
-  TcFastTable
+  // TcFastTable
+  // TcAceEditor
 } from '../packages/tennetcn-ui'
 
 const components = [
@@ -51,15 +52,15 @@ const components = [
   TcCheckboxButton,
   TcCheckboxGroup,
   TcClamp,
-  TcDatePicker,
-  TcDateTimePicker,
+  // TcDatePicker,
+  // TcDateTimePicker,
   TcDialog,
   TcEditTable,
   TcEditTreeTable,
   TcFieldset,
   TcFixedBottom,
-  TcForm,
-  TcFormItem,
+  // TcForm,
+  // TcFormItem,
   TcInput,
   TcInputMoney,
   TcInputNumber,
@@ -78,11 +79,12 @@ const components = [
   TcTable,
   TcTabs,
   TcTag,
-  TcTimePicker,
+  // TcTimePicker,
   TcTree,
-  TcTreeTable,
+  TcTreeTable
   // TcXgPlayer,
-  TcFastTable
+  // TcFastTable
+  // TcAceEditor
 ]
 import ElementUI from 'element-ui'
 
@@ -113,7 +115,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   version: '0.0.70',
   install,
-  utilLib,
+  // utilLib,
   directives,
   TcBadge,
   TcBlock,
@@ -123,15 +125,15 @@ export default {
   TcCheckboxButton,
   TcCheckboxGroup,
   TcClamp,
-  TcDatePicker,
-  TcDateTimePicker,
+  // TcDatePicker,
+  // TcDateTimePicker,
   TcDialog,
   TcEditTable,
   TcEditTreeTable,
   TcFieldset,
   TcFixedBottom,
-  TcForm,
-  TcFormItem,
+  // TcForm,
+  // TcFormItem,
   TcInput,
   TcInputMoney,
   TcInputNumber,
@@ -150,8 +152,9 @@ export default {
   TcTable,
   TcTabs,
   TcTag,
-  TcTimePicker,
+  // TcTimePicker,
   TcTree,
   // TcXgPlayer,
   TcTreeTable
+  // TcAceEditor
 }

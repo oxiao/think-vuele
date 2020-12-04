@@ -1,6 +1,6 @@
 import {
-  formatDate,
-  formatDateTime,
+  // formatDate,
+  // formatDateTime,
   findComponentDownward,
   findComponentUpward,
   findComponentsUpward,
@@ -16,13 +16,13 @@ import {
   isObject,
   isFunction,
   isDate,
-  isEmptyObject,
-  confirm,
-  random,
-  regluarUtil
+  isEmptyObject
+  // confirm
+  // random,
+  // regluarUtil
 } from '.'
 
-import vueMoment from 'vue-moment'
+// import vueMoment from 'vue-moment'
 
 const install = function(Vue, opts = {}) {
   Vue.prototype.$tcUtil = Vue.prototype.$tcUtil || {}
@@ -43,16 +43,16 @@ const install = function(Vue, opts = {}) {
   Vue.prototype.$tcUtil.findComponentsDownward = findComponentsDownward
   Vue.prototype.$tcUtil.findBrothersComponents = findBrothersComponents
 
-  Vue.prototype.$moment = Vue.prototype.$moment || {}
-  Vue.use(vueMoment)
-  Vue.prototype.$moment.formatDate = formatDate
-  Vue.prototype.$moment.formatDateTime = formatDateTime
+  // Vue.prototype.$moment = Vue.prototype.$moment || {}
+  // Vue.use(vueMoment)
+  // Vue.prototype.$moment.formatDate = formatDate
+  // Vue.prototype.$moment.formatDateTime = formatDateTime
 
-  Vue.prototype.$confirm = Vue.prototype.$confirm || {}
-  Vue.prototype.$confirm.warning = confirm
+  // Vue.prototype.$confirm = Vue.prototype.$confirm || {}
+  // Vue.prototype.$confirm.warning = confirm
 
-  Vue.prototype.$random = random
-  Vue.prototype.$regularUtil = regluarUtil
+//   Vue.prototype.$random = random
+//   Vue.prototype.$regularUtil = regluarUtil
 }
 
 export default install
