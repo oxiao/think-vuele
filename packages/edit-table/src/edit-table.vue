@@ -11,16 +11,11 @@
       v-bind="$attrs"
       class="tc-edit-table"
       v-on="$listeners">
-      <template #column="{ value, columnName, rowData, column }">
-        <span v-if="!toObject(column).editable">
-            <template v-if="column.formatter">
-              {{column.formatter(rowData, column, value)}}
-            </template>
-            <template v-else>
-              {{value}}
-            </template>
-        </span>
-        <slot name="editable" v-else :value="value" :columnName="columnName" :rowData="rowData" :column="column" >
+      <template v-for="col in columnFormate" #[col.name]="{ value, columnName, rowData, column, rowIndex }">
+        <template v-if="!(column.editable)">
+          {{column.formatter ? column.formatter(rowData, column, value) : value}}
+        </template>
+        <slot v-else :name="col.name+'edit'" :value="value" :columnName="columnName" :rowData="rowData" :column="column" :rowIndex="rowIndex">
           <div :class="{'editable-control' : isSignleMode, 'editable-container': !isSignleMode}">
             <tc-date-picker v-if="toObject(column).type === 'date'" v-model="rowData[columnName]" type="date" size="mini"></tc-date-picker>
             <tc-select v-else-if="toObject(column).type === 'select'" :providers="toObject(column).providers" v-model="rowData[columnName]" size="mini"></tc-select>
@@ -30,7 +25,7 @@
           <span :class="{'editable-span' : isSignleMode, 'editable-span-hide': !isSignleMode}">{{ value }}</span>
         </slot>
       </template>
-      <slot />
+      <slot/>
     </tc-table>
   </div>
 </template>
