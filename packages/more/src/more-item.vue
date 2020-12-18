@@ -10,7 +10,7 @@
         class="el-collapse-item__header"
         :id="`el-collapse-head-${id}`"
         :tabindex="disabled ? undefined : 0"
-        @click="handleHeaderClick"
+        style="cursor: default !important;"
       >
         <slot name="title">{{title}}</slot>
       </div>
@@ -24,7 +24,7 @@
         :aria-labelledby="`el-collapse-head-${id}`"
         :id="`el-collapse-content-${id}`"
       >
-        <div class="el-collapse-item__content" style="padding-bottom: 0 !important;">
+        <div class="el-collapse-item__content">
           <slot></slot>
         </div>
       </div>
@@ -52,7 +52,7 @@ export default {
     }
   },
 
-  inject: ['collapse'],
+  inject: ['collapse', ''],
 
   props: {
     title: String,
@@ -63,7 +63,7 @@ export default {
       }
     },
     disabled: Boolean,
-    isActive: {type: Boolean, required: false, default: true}
+    isActive: {type: Boolean, request: false, default: true}
   },
 
   computed: {
@@ -84,11 +84,13 @@ export default {
     },
     handleHeaderClick() {
       if (this.disabled) return
-      this.$emit('more-item-click', !this.isActive)
+
       this.dispatch('ElCollapse', 'item-click', this)
       this.focusing = false
       this.isClick = true
-      this.isActive = !this.isActive
+    },
+    handleEnterClick() {
+      // this.dispatch('ElCollapse', 'item-click', this)
     }
   }
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="tc-more">
     <el-collapse v-bind="$attrs" v-on="$listeners">
-      <more-item ref="moreItem" :is-active="isActive">
+      <more-item ref="moreItem" :isActive="expand">
         <template slot="title">
           <el-row style="width:100%">
             <el-col :span="12">
@@ -9,7 +9,7 @@
             </el-col>
             <el-col :span="12" style="text-align:right;">
               <slot name="tool"></slot>
-              <i class="cursor-pointer" :class="iconArrow" />
+              <el-link type="primary" :underline="false" icon="el-icon-d-arrow-right" :style="expand ? 'transform:rotate(90deg)' : ''" @click="handItemClick"></el-link>
             </el-col>
           </el-row>
         </template>
@@ -27,30 +27,22 @@ export default {
   components: {moreItem},
   data() {
     return {
-      cls: ''
     }
   },
   props: {
-    title: String,
-    isActive: {type: Boolean, required: false, default: true}
+    expand: {type: Boolean, request: false, default: true},
+    title: String
   },
   computed: {
-    iconArrow() {
-      return this.cls || (!this.isActive ? 'el-icon-arrow-up' : 'el-icon-arrow-down')
+    iconArrow: function() {
+      return this.expand ? 'el-icon-d-arrow-right' : 'el-icon-d-arrow-left'
     }
   },
   methods: {
-    handItemClick(e) {
-      this.$refs.moreItem.handleHeaderClick()
-      this.isActive = !this.isActive
+    handItemClick: function() {
+      // this.$refs.moreItem.handleHeaderClick()
+      this.expand = !this.expand
     }
-  },
-  mounted() {
-    this.$nextTick(function() {
-      this.$refs.moreItem.$on('more-item-click', function(b) {
-        this.cls = b ? 'el-icon-arrow-up' : 'el-icon-arrow-down'
-      })
-    })
   }
 }
 </script>

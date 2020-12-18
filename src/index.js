@@ -90,7 +90,7 @@ import ElementUI from 'element-ui'
 
 import utilLib from './utils/util-lib'
 
-import directives from './directives'
+// import directives from './directives'
 
 const install = function(Vue, opts = {}) {
   // load element ui
@@ -98,7 +98,7 @@ const install = function(Vue, opts = {}) {
   // load utilLib
   Vue.use(utilLib)
   // load directive
-  Vue.use(directives)
+  // Vue.use(directives)
 
   // load components
   components.forEach(component => {
@@ -116,7 +116,7 @@ export default {
   version: '0.0.70',
   install,
   // utilLib,
-  directives,
+  // directives,
   TcBadge,
   TcBlock,
   TcButton,
