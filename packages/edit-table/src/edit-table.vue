@@ -15,7 +15,7 @@
         <template v-if="!(column.editable)">
           {{column.formatter ? column.formatter(rowData, column, value) : value}}
         </template>
-        <slot v-else :name="col.name+'edit'" :value="value" :columnName="columnName" :rowData="rowData" :column="column" :rowIndex="rowIndex">
+        <slot v-else :name="col.name+'_edit'" :value="value" :columnName="columnName" :rowData="rowData" :column="column" :rowIndex="rowIndex">
           <div :class="{'editable-control' : isSignleMode, 'editable-container': !isSignleMode}">
             <tc-date-picker v-if="toObject(column).type === 'date'" v-model="rowData[columnName]" type="date" size="mini"></tc-date-picker>
             <tc-select v-else-if="toObject(column).type === 'select'" :providers="toObject(column).providers" v-model="rowData[columnName]" size="mini"></tc-select>
@@ -51,6 +51,7 @@ export default {
       } else {
         tmp = this.data
       }
+      if (!tmp) tmp = []
       const func = this.evalFunc || formatData
       return func(tmp)
     },
