@@ -4,23 +4,23 @@
     :data="formatData"
     :columns="formatColumns"
     :row-style="showRow"
+    :sequence="sequence"
     v-bind="$attrs"
     :stripe="stripe"
     :border="border"
     :fit="fit"
     :selection="selection"
+    :selectionType="selectionType"
     class="tc-tree-table"
     v-on="$listeners" >
-       <template #column="{ value, columnName, rowData, column }">
-        <slot name="column" :value="value" :columnName="columnName" :property="columnName" :rowData="rowData" :column="column">
-          <template v-if="column.formatter">
-            {{column.formatter(rowData, column, value)}}
-          </template>
-          <template v-else>
-            {{value}}
-          </template>
+       <template v-for="col in formatColumns" #[col.name]="{ value, columnName, rowData, column }" >
+        <slot :name="columnName" :value="value" :columnName="columnName" :property="columnName" :rowData="rowData" :column="column">
+          {{col.formatter ? col.formatter(rowData, col, value) : value}}
         </slot>
        </template>
+      <template #empty>
+        <slot name="empty">{{ emptyText}}</slot>
+      </template>
        <slot />
     </tc-table>
   </div>
@@ -37,7 +37,9 @@ export default {
     hier: { type: Boolean, required: false, default: false },
     evalFunc: { type: Function, required: false, default: null },
     evalArgs: { type: Array, default: () => [] },
-    expandAll: { type: Boolean, default: false }
+    expandAll: { type: Boolean, default: false },
+    sequence: { type: Boolean, required: false, default: false },
+    selectionType: { type: String, required: false, default: 'single' }
   },
   computed: {
     // 格式化数据源
@@ -82,6 +84,19 @@ export default {
     },
     toObject(observer) {
       return Object.assign({}, observer)
+    },
+    openAll(val) {
+      // treeToArray(this.data, val)
+      let me = this.$refs.eltable
+      let exp = function(ary) {
+        for (let n of ary) {
+          me.toggleRowExpansion(n, val)
+          if (n.children && n.children.length > 0) {
+            exp(n.children)
+          }
+        }
+      }
+      exp(this.data)
     }
   }
 }

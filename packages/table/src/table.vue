@@ -16,7 +16,7 @@
       @select="myHandleSelect"
       @row-click="myRowClick"
       @select-all="myHandleSelectAll">
-      <el-table-column v-if="selection" type="selection" width="45" align="center">
+      <el-table-column v-if="selection" type="selection" width="45" align="center" property="checked">
       </el-table-column>
       <el-table-column v-if="sequence" label="序" align="center" width="55">
         <template slot-scope="scope">
@@ -32,6 +32,9 @@
           </slot>-->
         </template>
       </el-table-column>
+      <template #empty>
+        <slot name="empty">{{ emptyText}}</slot>
+      </template>
       <slot />
     </el-table>
   </div>
@@ -59,7 +62,7 @@ export default {
   watch: {
     'data': function() {
       this.currentRow = null
-    }
+    },
   },
   computed: {
     formatData: function() {
@@ -81,6 +84,9 @@ export default {
     },
     getSelection() {
       return this.multipleSelection
+    },
+    toggleRowExpansion(row, expanded) {
+      this.$refs.eltable.toggleRowExpansion(row, expanded)
     },
     toggleRowSelection(row, selected) {
       this.$refs.eltable.toggleRowSelection(row, selected)

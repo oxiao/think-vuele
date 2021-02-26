@@ -25,6 +25,9 @@
           <span :class="{'editable-span' : isSignleMode, 'editable-span-hide': !isSignleMode}">{{ value }}</span>
         </slot>
       </template>
+      <template #empty>
+        <slot name="empty">{{ emptyText}}</slot>
+      </template>
       <slot/>
     </tc-table>
   </div>

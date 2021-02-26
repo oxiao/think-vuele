@@ -1,6 +1,8 @@
 <template>
   <fieldset v-bind="$attrs" class="tc-fieldset">
-    <legend class="fieldset-legend">{{ title }}</legend>
+    <legend class="fieldset-legend">
+      <slot name="title" :title="title">{{ title }}</slot>
+    </legend>
     <slot></slot>
   </fieldset>
 </template>

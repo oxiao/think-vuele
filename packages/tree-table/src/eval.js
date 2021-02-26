@@ -11,6 +11,9 @@ export default function treeToArray(data, expandAll, parent = null, level = null
     if (record._expanded === undefined) {
       Vue.set(record, '_expanded', record.expand | expandAll)
     }
+    //
+    // record._expanded = expandAll ? 1 : 0
+
     let _level = 1
     if (level !== undefined && level !== null) {
       _level = level + 1
